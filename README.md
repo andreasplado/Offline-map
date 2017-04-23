@@ -2,4 +2,6 @@
 Offline map for SMIT
 
 
-![alt tag](![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt tag](http://phonewe.freeiz.com/smit/screenshots/1.png)
+![alt tag](http://phonewe.freeiz.com/smit/screenshots/2.png)
+![alt tag](http://phonewe.freeiz.com/smit/screenshots/3.png)

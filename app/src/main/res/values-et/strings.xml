@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smit test</string>
+    <string name="download_started">Allalaadimine hakkas</string>
+    <string name="download_again">Lae uuesti alla</string>
+    <string name="download_exception">Allaadimise veateade</string>
+    <string name="download_failed">Allaadimine nurjus</string>
+    <string name="download_finished">Allaadimine lõpetatud</string>
+        <string name="memorycard_has_file_missing">
+        Mälukaardilpole mapi faili.\n
+        /osmdroid/tile.zip. Sa pead selle võrgust alla laadima.\n
+        Selleks, et faili saada, vajutage \'LAE ALLA\'.
+    </string>
+    <string name="cancel">Tühista</string>
+    <string name="GPSAlertDialogTitle">GPS Seaded</string>
+    <string name="action_settings">Ok</string>
+    <string name="GPSAlertDialogMessage">Kas sa soovid GPS-i sisse lülitada?</string>
+</resources>

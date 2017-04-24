@@ -23,3 +23,5 @@ Map tile.zip is created Using Mobile Atlas Creator(MOBAC)</br>
 </br>
 If the map file is created then you need to upload it to server.</br>
 
+
+<a href="https://github.com/andreasplado/Offline-map/raw/master/app.apk">Download APK</a>

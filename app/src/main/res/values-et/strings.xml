@@ -15,4 +15,8 @@
     <string name="GPSAlertDialogTitle">GPS Seaded</string>
     <string name="action_settings">Ok</string>
     <string name="GPSAlertDialogMessage">Kas sa soovid GPS-i sisse lülitada?</string>
+    <string name="download">Lae alla</string>
+    <string name="permission_denied_now_you">Luba keelatud. Nüüd te ei saa kasutada kohalikku ketast</string>
+    <string name="permission_granted_now_you">Luba antud, Nüüd saate kasutada kohalikk ketast</string>
+    <string name="write_external_storage_permission_allows"></string>
 </resources>

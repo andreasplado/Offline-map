@@ -38,9 +38,9 @@ public class MainActivity extends Activity {
         switch (requestCode){
             case PERMISSION_REQUEST_CODE:
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    Log.e("value", "Permission Granted, Now you can use local drive .");
+                    Toast.makeText(this, getString(R.string.permission_granted_now_you), Toast.LENGTH_LONG).show();
                 }else{
-                    Log.e("value", "Permission Denied, You cannot use local drive .");
+                    Toast.makeText(this, getString(R.string.permission_denied_now_you), Toast.LENGTH_LONG).show();
                 }
                 break;
         }

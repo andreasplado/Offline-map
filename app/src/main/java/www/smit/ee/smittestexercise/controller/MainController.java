@@ -113,7 +113,7 @@ public class MainController {
     private void requestPermission() {
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText(activity, "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, context.getString(R.string.write_external_storage_permission_allows), Toast.LENGTH_LONG).show();
         } else {
             ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
@@ -145,7 +145,7 @@ public class MainController {
 
     public void gpsCheck() {
         if(GPSUtils.isGpsEnabled(activity)){
-            Toast.makeText(context, "GPSUtils is Enabled in your devide", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "GPS is Enabled in your devide", Toast.LENGTH_SHORT).show();
         }else{
             showGPSDisabledAlertToUser(activity);
         }
@@ -153,9 +153,9 @@ public class MainController {
 
     private static void showGPSDisabledAlertToUser(final Activity activity){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
-        alertDialogBuilder.setMessage("GPSUtils is disabled in your device. Would you like to enable it?")
+        alertDialogBuilder.setMessage(activity.getString(R.string.permission_granted_now_you))
                 .setCancelable(false)
-                .setPositiveButton("GPSUtils Settings",
+                .setPositiveButton("GPS Settings",
                         new DialogInterface.OnClickListener(){
                             public void onClick(DialogInterface dialog, int id){
                                 Intent callGPSSettingIntent = new Intent(

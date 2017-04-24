@@ -14,4 +14,9 @@
     <string name="GPSAlertDialogTitle">GPS Settings</string>
     <string name="action_settings">Ok</string>
     <string name="GPSAlertDialogMessage">Do you want to turn on GPS?</string>
+    <string name="download">Download</string>
+    <string name="write_external_storage_permission_allows">Write External Storage permission allows us to do store images. Please allow this permission in App Settings.</string>
+    <string name="permission_granted_now_you">Permission granted, Now you can use local drive</string>
+    <string name="permission_denied_now_you">Permission denied, Now you can\'t use local drive</string>
+    <string name="gps_is_disabled_in_your_device_would_you">GPS is disabled in your device. Would you like to enable it?</string>
 </resources>

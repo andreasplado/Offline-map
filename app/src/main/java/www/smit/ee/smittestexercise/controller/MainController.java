@@ -1,14 +1,11 @@
 package www.smit.ee.smittestexercise.controller;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
-import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
@@ -24,7 +21,9 @@ import www.smit.ee.smittestexercise.DownloadActivity;
 import www.smit.ee.smittestexercise.R;
 import www.smit.ee.smittestexercise.model.MarkedLocation;
 import www.smit.ee.smittestexercise.model.MarkedLocations;
+import www.smit.ee.smittestexercise.utils.Alert;
 import www.smit.ee.smittestexercise.utils.GPSUtils;
+import www.smit.ee.smittestexercise.utils.MyLocationUtil;
 import www.smit.ee.smittestexercise.utils.SDCardUtils;
 
 import static www.smit.ee.smittestexercise.utils.Constants.PERMISSION_REQUEST_CODE;
@@ -135,6 +134,7 @@ public class MainController {
             readJSON();
             parseJson();
             addMap();
+            setMyLocation();
             addMarkersToMap();
         }else{
             Intent i = new Intent(context, DownloadActivity.class);
@@ -147,31 +147,8 @@ public class MainController {
         if(GPSUtils.isGpsEnabled(activity)){
             Toast.makeText(context, "GPS is Enabled in your devide", Toast.LENGTH_SHORT).show();
         }else{
-            showGPSDisabledAlertToUser(activity);
+            Alert.gpsDisabledAlert(activity);
         }
-    }
-
-    private static void showGPSDisabledAlertToUser(final Activity activity){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
-        alertDialogBuilder.setMessage(activity.getString(R.string.permission_granted_now_you))
-                .setCancelable(false)
-                .setPositiveButton("GPS Settings",
-                        new DialogInterface.OnClickListener(){
-                            public void onClick(DialogInterface dialog, int id){
-                                Intent callGPSSettingIntent = new Intent(
-                                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                //activity.startActivity(callGPSSettingIntent);
-                                activity.startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS), 5);
-                            }
-                        });
-        alertDialogBuilder.setNegativeButton("Cancel",
-                new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = alertDialogBuilder.create();
-        alert.show();
     }
 
     public void addMarkersToMap(){
@@ -207,5 +184,10 @@ public class MainController {
     public void parseJson(){
         GPSUtils gpsUtils = new GPSUtils();
         gpsUtils.parseJSONData();
+    }
+
+    public void setMyLocation(){
+        MyLocationUtil myLocationUtil = new MyLocationUtil(activity, context, mapView);
+        myLocationUtil.setMyLocation();
     }
 }

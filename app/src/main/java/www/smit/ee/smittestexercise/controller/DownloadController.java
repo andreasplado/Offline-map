@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
@@ -12,17 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import www.smit.ee.smittestexercise.MainActivity;
 import www.smit.ee.smittestexercise.R;
-import www.smit.ee.smittestexercise.utils.DownloadUtil;
-import www.smit.ee.smittestexercise.utils.SDCardUtils;
-import www.smit.ee.smittestexercise.utils.ProgressBarUtils;
-import www.smit.ee.smittestexercise.utils.Urls;
+import www.smit.ee.smittestexercise.utils.DownloadUtils;
 
 /**
  * Created by Andreas on 22.04.2017.
@@ -36,7 +28,7 @@ public class DownloadController extends AsyncTask<String, String, String> {
     private File outputFile = null;
     private Button buttonText;
     private TextView infoText;
-    private DownloadUtil downloadUtil;
+    private DownloadUtils downloadUtils;
 
     private NumberProgressBar numberProgressBar;
 
@@ -50,7 +42,7 @@ public class DownloadController extends AsyncTask<String, String, String> {
         buttonText = (Button)activity.findViewById(R.id.download);
         infoText = (TextView)activity.findViewById(R.id.download_info);
         numberProgressBar = (NumberProgressBar)activity.findViewById(R.id.download_progress_bar);
-        downloadUtil = new DownloadUtil(activity, context, buttonText, infoText, numberProgressBar);
+        downloadUtils = new DownloadUtils(activity, context, buttonText, infoText, numberProgressBar);
     }
 
     @Override
@@ -63,7 +55,7 @@ public class DownloadController extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String s) {
         try {
-            if (downloadUtil.outputFile != null) {
+            if (downloadUtils.outputFile != null) {
                 buttonText.setEnabled(true);
                 buttonText.setText(context.getString(R.string.download_finished));//If Download completed then change button text
                 numberProgressBar.setProgress(0);
@@ -109,8 +101,8 @@ public class DownloadController extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        downloadUtil.downloadAndWriteFile("http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/", "tiles.zip", "osmdroid");
-        downloadUtil.downloadAndWriteFile("http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/", "mapped_locations.json", "smit");
+        downloadUtils.downloadAndWriteFile("http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/", "tiles.zip", "osmdroid");
+        downloadUtils.downloadAndWriteFile("http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/", "mapped_locations.json", "smit");
         return null;
     }
 

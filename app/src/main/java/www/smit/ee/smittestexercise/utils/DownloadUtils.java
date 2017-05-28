@@ -20,7 +20,7 @@ import java.net.URL;
  * Created by Andreas on 23.04.2017.
  */
 
-public class DownloadUtil {
+public class DownloadUtils {
 
 
     private Activity activity;
@@ -31,7 +31,7 @@ public class DownloadUtil {
     private TextView infoText;
     private NumberProgressBar numberProgressBar;
 
-    public DownloadUtil(Activity activity, Context context, Button buttonText, TextView infoText, NumberProgressBar numberProgressBar){
+    public DownloadUtils(Activity activity, Context context, Button buttonText, TextView infoText, NumberProgressBar numberProgressBar){
         this.activity = activity;
         this.context = context;
         this.buttonText = buttonText;

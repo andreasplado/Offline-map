@@ -188,6 +188,9 @@ public class MainController {
 
     public void setMyLocation(){
         MyLocationUtil myLocationUtil = new MyLocationUtil(activity, context, mapView);
+        myLocationUtil.registerGPSReciever();
         myLocationUtil.setMyLocation();
     }
+
+
 }

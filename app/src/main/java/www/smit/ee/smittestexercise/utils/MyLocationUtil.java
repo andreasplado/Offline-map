@@ -2,7 +2,10 @@ package www.smit.ee.smittestexercise.utils;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -47,14 +50,21 @@ public class MyLocationUtil {
                 1);
         LocationManager locationManager = (LocationManager) activity.getSystemService(LOCATION_SERVICE);
         LocationListener listener = new LocationListener() {
+
+
+
             @Override
             public void onLocationChanged(Location location) {
-                Toast.makeText(context, Double.toString(location.getLongitude()), Toast.LENGTH_LONG).show();
 
+                //Set user location
                 MyLocationNewOverlay myLocationoverlay = new MyLocationNewOverlay(mapView);
                 myLocationoverlay.enableMyLocation();
-
                 mapView.getOverlays().add(myLocationoverlay);
+
+                //Draw user
+                mapView.getController().setCenter(new GeoPoint(location.getLatitude(), location.getLongitude()));
+
+
             }
 
             @Override
@@ -80,6 +90,21 @@ public class MyLocationUtil {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     1);
         }
+    }
 
+    private BroadcastReceiver gpsReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final LocationManager manager = (LocationManager) context.getSystemService( Context.LOCATION_SERVICE );
+            if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
+
+            } else {
+                Alert.info(activity, "Viga", "Palun lüitage GPS sisse");
+            }
+        }
+    };
+
+    public void registerGPSReciever(){
+        activity.registerReceiver(gpsReceiver, new IntentFilter("android.location.PROVIDERS_CHANGED"));
     }
 }

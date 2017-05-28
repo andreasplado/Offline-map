@@ -28,6 +28,6 @@ If the map file is created then you need to upload it to server.</br>
 Added user locatin and GPS listener
 </br>
 <img src="http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/screenshots/user_location.png"
-height="400" width="200"/>
+height="600" width="300"/>
 
 <a href="https://github.com/andreasplado/Offline-map/raw/master/app.apk">Download APK</a>

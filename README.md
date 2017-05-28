@@ -1,7 +1,7 @@
-# Offline-map
-Offline map for SMIT
+﻿# Offline-map
+Offline map
 
-<img src="http://phonewe.freeiz.com/smit/screenshots/offline_map.png" />
+<img src="http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/screenshots/offline_map.png" />
 
 
 
@@ -19,7 +19,7 @@ JSON EXAMPLE:
 ```
 
 Map tile.zip is created Using Mobile Atlas Creator(MOBAC)</br>
-<img src="http://phonewe.freeiz.com/smit/screenshots/mobac.png" width="400" height="300" />
+<img src="http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/screenshots/mobac.png" width="400" height="300" />
 </br>
 If the map file is created then you need to upload it to server.</br>
 

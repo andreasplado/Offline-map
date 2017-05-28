@@ -109,7 +109,7 @@ public class DownloadController extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        downloadUtil.downloadAndWriteFile("http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/", "tile.zip", "osmdroid");
+        downloadUtil.downloadAndWriteFile("http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/", "tiles.zip", "osmdroid");
         downloadUtil.downloadAndWriteFile("http://ec2-35-162-160-209.us-west-2.compute.amazonaws.com:8080/static_files/28052017/", "mapped_locations.json", "smit");
         return null;
     }

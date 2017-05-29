@@ -1,10 +1,12 @@
 package www.smit.ee.smittestexercise.controller;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,6 +38,16 @@ public class DownloadController extends AsyncTask<String, String, String> {
         this.context = context;
         this.activity = activity;
         init();
+        requestPermissions();
+    }
+
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(activity,
+                new String[]{
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1
+        );
+
     }
 
     private void init() {

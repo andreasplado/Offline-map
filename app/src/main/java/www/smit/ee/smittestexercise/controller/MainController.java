@@ -1,5 +1,6 @@
 package www.smit.ee.smittestexercise.controller;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import java.io.File;
+import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 import www.smit.ee.smittestexercise.DownloadActivity;
 import www.smit.ee.smittestexercise.R;
@@ -84,38 +86,26 @@ public class MainController {
     }
 
     public void requestPermissonCheck(){
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-            if (checkPermission())
-            {
-                // Code for above or equal 23 API Oriented Device
-                // Your Permission granted already .Do next code
-            } else {
-                requestPermission(); // Code for permission
-            }
-        }
-        else
-        {
-            // Code for Below 23 API Oriented Device
-            // Do next code
-        }
+        requestPermission();
     }
 
-    private boolean checkPermission() {
+        private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (result == PackageManager.PERMISSION_GRANTED) {
+            int result2 = ContextCompat.checkSelfPermission(activity, android.Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED &&result2 == PackageManager.PERMISSION_GRANTED) {
             return true;
         } else {
             return false;
         }
     }
-    private void requestPermission() {
 
-        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText(activity, context.getString(R.string.write_external_storage_permission_allows), Toast.LENGTH_LONG).show();
-        } else {
-            ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-        }
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(activity,
+                new String[]{
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1
+                );
+
     }
 
     public boolean fileExists(String path, String file){

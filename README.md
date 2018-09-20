@@ -1,4 +1,4 @@
-﻿# offline map
+﻿# Offline map
 Offline map
 
 This application downloads offline map (tile.zip) from the server to your phone SD card (/osmdroid/tile.zip).</br>
